@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ehsanx64/nodebase/issues"
   },
-  "homepage": "https://github.com/ehsanx64/nodebase#readme"
+  "homepage": "https://github.com/ehsanx64/nodebase#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
