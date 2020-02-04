@@ -1,3 +1,3 @@
 # nodebase
 
-Web Application Basic Skeleton writen in Node.js
+Web Application Basic Skeleton writen in Node.js and Express.
