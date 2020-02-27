@@ -15,7 +15,9 @@ var Module1 = function () {
         })
 
         this.app.get('/mod1/hello', function (req, res) {
-            res.send(that.hello())
+            res.render('hello', {
+                str: that.hello()
+            })
         })
     }
 
