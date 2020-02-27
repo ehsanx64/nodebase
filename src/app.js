@@ -12,6 +12,11 @@ for (var i in mods) {
 
 app.use(express.static('public'))
 app.set('view engine', 'pug')
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: "Nodebase",
+        message: "Welcome to Nodebase"
+    })
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
