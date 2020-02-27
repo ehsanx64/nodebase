@@ -14,11 +14,11 @@ var Module1 = function () {
             res.end(that.loadMessage())
         })
 
-        this.app.get('/mod1/hello', function (req, res) {
-            res.render('hello', {
-                str: that.hello()
-            })
-        })
+        // this.app.get('/mod1/hello', function (req, res) {
+        //     res.render('hello', {
+        //         str: that.hello()
+        //     })
+        // })
     }
 
     this.hello = function () {
