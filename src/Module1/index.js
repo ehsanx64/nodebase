@@ -19,16 +19,20 @@ var Module1 = function () {
         var that = this;
 
         this.app.get('/mod1', function (req, res) {
-            res.end(that.loadMessage())
+            res.render('Module1/views/main', {
+                title: 'Module1 Main'
+            })
         })
 
-        this.app.get('/mod1/hello', function (req, res) {
-            res.render('Module1/views/hello', {
+        this.app.get('/mod1/hi', function (req, res) {
+            res.render('Module1/views/hi', {
+                title: 'Module1 Hi'
             })
         })
 
         this.app.get('/mod1/goodbye', function (req, res) {
             res.render('Module1/views/goodbye', {
+                title: 'Module1 Goodbye'
             })
         })
     }

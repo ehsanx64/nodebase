@@ -1,10 +1,17 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 const port = 3000
 const mod1 = require('./Module1')
 const mods = [
     mod1
 ]
+
+
+global.nodebase = {
+    name: "nodebase",
+    title: "Nodebase"
+};
 
 // Loop through modules and try to load them (app object passed to each module)
 for (var i in mods) {
@@ -13,7 +20,7 @@ for (var i in mods) {
 
 // Use public as static assets folder
 app.use(express.static('public'))
-app.use(express.static('concept-assets'))
+app.use('/assets', express.static('concept-assets'))
 
 // Set view engine to pug
 app.set('view engine', 'pug')
@@ -28,6 +35,8 @@ app.set('views', [
 
 // Homepage route handler
 app.get('/', (req, res) => {
+    // let path = require('path')
+    // res.sendFile(path.join(__dirname + '/../views/index.html'))
     res.render('home', {
         title: 'Home',
         item: __dirname + '/../views'
@@ -37,7 +46,7 @@ app.get('/', (req, res) => {
 // /hello route handler
 app.get('/hello', (req, res) => {
     res.render('hello', {
-        title: "Hello Page"
+        title: "Hello"
     })
 })
 
