@@ -12,13 +12,15 @@ for (var i in mods) {
 
 app.use(express.static('public'))
 app.set('view engine', 'pug')
-// app.set('views', [
-//     __dirname + '/views',
-//     __dirname + '/Module1/views'
-// ])
+app.set('views', [
+    __dirname + '/../views',
+    __dirname,
+    __dirname + '/Module1/views'
+])
 app.get('/', (req, res) => {
     res.render('home', {
-        title: 'Home'
+        title: 'Home',
+        item: __dirname + '/../views'
     })
 })
 
