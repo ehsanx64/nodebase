@@ -13,6 +13,7 @@ for (var i in mods) {
 
 // Use public as static assets folder
 app.use(express.static('public'))
+app.use(express.static('concept-assets'))
 
 // Set view engine to pug
 app.set('view engine', 'pug')
