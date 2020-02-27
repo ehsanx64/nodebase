@@ -10,7 +10,8 @@ for (var i in mods) {
     mods[i](app)
 }
 
-app.get('/', (req, res) => res.send('Hello World!'))
 app.use(express.static('public'))
+app.set('view engine', 'pug')
+app.get('/', (req, res) => res.send('Hello World!'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
