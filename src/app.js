@@ -20,14 +20,14 @@ for (var i in mods) {
 
 // Use public as static assets folder
 app.use(express.static('public'))
-app.use('/assets', express.static('concept-assets'))
+app.use('/assets', express.static(__dirname + '/../concept-assets'))
 
 // Set view engine to pug
 app.set('view engine', 'pug')
 
 // Define views folders
 app.set('views', [
-    __dirname + '/../views',        // This is global views folder
+    __dirname + '/views',        // This is global views folder
     __dirname,                      // Current folder (src). We need it for module views reference
     // TODO: Setting the views folder for each module should be handled automatically
     __dirname + '/Module1/views'    // Views in Module1 folder

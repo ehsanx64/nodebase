@@ -18,17 +18,18 @@ var Module1 = function () {
         // this is not available in closures, so 'that' is a work-around
         var that = this;
 
+        this.app.get('/mod1/hi', function (req, res) {
+            res.render('Module1/views/hi', {
+                title: 'Module1 Hi'
+            })
+        })
+        
         this.app.get('/mod1', function (req, res) {
             res.render('Module1/views/main', {
                 title: 'Module1 Main'
             })
         })
 
-        this.app.get('/mod1/hi', function (req, res) {
-            res.render('Module1/views/hi', {
-                title: 'Module1 Hi'
-            })
-        })
 
         this.app.get('/mod1/goodbye', function (req, res) {
             res.render('Module1/views/goodbye', {
