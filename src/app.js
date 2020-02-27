@@ -6,17 +6,26 @@ const mods = [
     mod1
 ]
 
+// Loop through modules and try to load them (app object passed to each module)
 for (var i in mods) {
     mods[i](app)
 }
 
+// Use public as static assets folder
 app.use(express.static('public'))
+
+// Set view engine to pug
 app.set('view engine', 'pug')
+
+// Define views folders
 app.set('views', [
-    __dirname + '/../views',
-    __dirname,
-    __dirname + '/Module1/views'
+    __dirname + '/../views',        // This is global views folder
+    __dirname,                      // Current folder (src). We need it for module views reference
+    // TODO: Setting the views folder for each module should be handled automatically
+    __dirname + '/Module1/views'    // Views in Module1 folder
 ])
+
+// Homepage route handler
 app.get('/', (req, res) => {
     res.render('home', {
         title: 'Home',
@@ -24,10 +33,12 @@ app.get('/', (req, res) => {
     })
 })
 
+// /hello route handler
 app.get('/hello', (req, res) => {
     res.render('hello', {
         title: "Hello Page"
     })
 })
 
+// Start the application by listening to connections at specified port number
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

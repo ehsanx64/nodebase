@@ -1,13 +1,21 @@
 var Module1 = function () {
     this.name = "Module1";
 
+    /*
+    ** Load the module.
+    ** Each module should have this (load) method; it does the initialization
+    */
     this.load = function (express) {
         var that = this;
         this.app = express;
         this.setRoutes();
     };
 
+    /*
+    ** Define routes which this module works/handles with.
+    */
     this.setRoutes = function () {
+        // this is not available in closures, so 'that' is a work-around
         var that = this;
 
         this.app.get('/mod1', function (req, res) {
