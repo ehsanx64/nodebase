@@ -6,11 +6,19 @@ const mod1 = require('./Module1')
 const mods = [
     mod1
 ]
+var url = require('url');
 
+function fullUrl(req) {
+  return url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+  });
+}
 
 global.nodebase = {
     name: "nodebase",
-    title: "Nodebase"
+    title: "Nodebase",
 };
 
 // Loop through modules and try to load them (app object passed to each module)
@@ -37,9 +45,9 @@ app.set('views', [
 app.get('/', (req, res) => {
     // let path = require('path')
     // res.sendFile(path.join(__dirname + '/../views/index.html'))
+    nodebase.currentUrl = fullUrl(req)
     res.render('home', {
         title: 'Home',
-        item: __dirname + '/../views'
     })
 })
 
