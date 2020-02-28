@@ -3,8 +3,9 @@ const app = express()
 const path = require('path')
 const port = 3000
 const mod1 = require('./Module1')
+const admin = require('./Admin')
 const mods = [
-    mod1
+    mod1, admin
 ]
 var url = require('url');
 
