@@ -1,1 +1,4 @@
 /* Application-wide CSS Styles */
+span.age-info {
+    font-size: 80%;
+}

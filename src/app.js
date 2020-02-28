@@ -57,4 +57,13 @@ app.get('/hello', (req, res) => {
     })
 })
 
+// /data route handler
+app.get('/data', (req, res) => {
+    var data = require('./data')
+    res.render('data', {
+        title: "Data",
+        data: data
+    })
+})
+
 module.exports = app;

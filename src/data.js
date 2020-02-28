@@ -1,4 +1,4 @@
-module.exports.data = {[
+module.exports = [
     {
         name: "Adam Smith",
         age: 30
@@ -11,4 +11,8 @@ module.exports.data = {[
         name: "Eli Jackson",
         age: 20
     },
-]};
+    {
+        name: "Joe Lehman",
+        age: 42
+    }
+];
