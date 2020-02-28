@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ehsanx64/nodebase#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.9.2",
     "pug": "^2.0.4"
   }
 }
