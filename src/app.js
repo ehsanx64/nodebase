@@ -66,4 +66,8 @@ app.get('/data', (req, res) => {
     })
 })
 
+app.put('/data', (req, res) => {
+    res.status(200).json(req.params)
+})
+
 module.exports = app;
