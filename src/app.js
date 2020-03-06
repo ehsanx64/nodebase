@@ -6,6 +6,7 @@ const mods = [
     mod1, admin
 ]
 var url = require('url');
+var db = require('./db');
 
 function fullUrl(req) {
   return url.format({
@@ -68,6 +69,7 @@ app.get('/data', (req, res) => {
 
 app.put('/data', (req, res) => {
     res.status(200).json(req.params)
+
 })
 
 module.exports = app;
