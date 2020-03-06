@@ -30,6 +30,9 @@ for (var i in mods) {
 app.use(express.static('public'))
 app.use('/assets', express.static(__dirname + '/../concept-assets'))
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 // Set view engine to pug
 app.set('view engine', 'pug')
 
@@ -68,7 +71,16 @@ app.get('/data', (req, res) => {
 })
 
 app.put('/data', (req, res) => {
-    res.status(200).json(req.params)
+    var person = require('./schemas/person');
+    console.log('PUT:/data');
+    console.log(req.body);
+    res.status(200).json({
+        headers: {
+            request: req.get('Content-Type'),
+            name: req.get('name')
+        },
+        body: req.body
+    })
 
 })
 
