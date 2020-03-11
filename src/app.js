@@ -70,14 +70,38 @@ app.get('/data', (req, res) => {
     })
 })
 
-app.put('/data', (req, res) => {
-    var person = require('./schemas/person');
-    console.log('PUT:/data');
-    console.log(req.body);
+app.get('/dbdata', (req, res) => {
+    var Person = require('./models/person');
+
+    Person.find().exec((err, persons) => {
+        console.log('Persons:');
+        console.log(persons);
+        res.status(200).render('person', {
+            message: 'Everything is fine.',
+            data: persons
+        });
+    })
+})
+
+app.put('/dbdata', (req, res) => {
+    var Person = require('./models/person');
+    var george = new Person({
+        name: 'George',
+        age: 67
+    });
+    george.save().then(() => console.log('George saved')).catch(err => console.log(err));
+    // console.log('PUT:/data');
+    // console.log(req.body);
+    // console.log(Person);
+    // console.log(george);
     res.status(200).json({
         headers: {
             request: req.get('Content-Type'),
             name: req.get('name')
+        },
+        db: {
+            type: typeof Person,
+            schema: Person
         },
         body: req.body
     })

@@ -1,0 +1,19 @@
+extends index.html
+
+block pageContent
+    h2 Person Information
+    block pageContent
+        h3 Collection Information
+        p Number of people in collection: #{data.length}
+
+        h3 Collection Data
+        p
+            strong Status:&nbsp;
+            span= message
+        ul
+            each person in data 
+                li= person.name
+                    span.age-info
+                        sub
+                            em #{person.age}
+                            span years old
