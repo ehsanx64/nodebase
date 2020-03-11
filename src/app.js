@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const mod1 = require('./Module1')
 const admin = require('./Admin')
+const person = require('./Person')
 const mods = [
-    mod1, admin
+    mod1, admin, person
 ]
 var url = require('url');
 var db = require('./db');
@@ -59,53 +60,6 @@ app.get('/hello', (req, res) => {
     res.render('hello', {
         title: "Hello"
     })
-})
-
-// /data route handler
-app.get('/data', (req, res) => {
-    var data = require('./data')
-    res.render('data', {
-        title: "Data",
-        data: data
-    })
-})
-
-app.get('/dbdata', (req, res) => {
-    var Person = require('./models/person');
-
-    Person.find().exec((err, persons) => {
-        console.log('Persons:');
-        console.log(persons);
-        res.status(200).render('person', {
-            message: 'Everything is fine.',
-            data: persons
-        });
-    })
-})
-
-app.put('/dbdata', (req, res) => {
-    var Person = require('./models/person');
-    var george = new Person({
-        name: 'George',
-        age: 67
-    });
-    george.save().then(() => console.log('George saved')).catch(err => console.log(err));
-    // console.log('PUT:/data');
-    // console.log(req.body);
-    // console.log(Person);
-    // console.log(george);
-    res.status(200).json({
-        headers: {
-            request: req.get('Content-Type'),
-            name: req.get('name')
-        },
-        db: {
-            type: typeof Person,
-            schema: Person
-        },
-        body: req.body
-    })
-
 })
 
 module.exports = app;

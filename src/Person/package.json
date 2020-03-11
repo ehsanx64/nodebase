@@ -1,0 +1,11 @@
+{
+  "name": "person",
+  "version": "1.0.0",
+  "description": "Person -- A module to manage persons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ehsan Mohammadi <ehsanx64@gmail.com>",
+  "license": "ISC"
+}
