@@ -31,7 +31,7 @@ var Person = function () {
             })
         })
 
-        this.app.put('/person', function (req, res) {
+        this.app.post('/person', function (req, res) {
             var Person = require('./models/Person');
 
             var george = new Person({
@@ -54,6 +54,28 @@ var Person = function () {
                 },
                 body: req.body
             })
+        })
+
+        this.app.put('/person', function (req, res) {
+            var Person = require('./models/Person');
+            var request = {
+                name: req.name,
+                body: {
+                    name: req.body.name,
+                    age: req.body.age
+                }
+            };
+
+            var newPerson = new Person(req.body);
+            newPerson.save()
+                .then(() => {
+                    res.status(200).json({
+                        result: true,
+                        message: "Inserted new person",
+                        request: request
+                    });
+                })
+                .catch((err) => console.log(err));
         })
 
         this.app.get('/person/static', function (req, res) {
