@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 try {
-    mongoose.connect("mongodb://172.29.0.2:27017/mydb", {
+    mongoose.connect("mongodb://172.22.0.2:27017/mydb", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
