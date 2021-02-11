@@ -1,12 +1,17 @@
+var util = require('util');
 var mongoose = require('mongoose'); 
 var dotenv = require('dotenv');
 
 dotenv.config();
 
-const { MONGO_HOST, MONGO_PORT, MONGO_USER, MONGO_PASS } = process.env;
+const { 
+    MONGO_HOST, MONGO_PORT, MONGO_USER, MONGO_PASS, MONGO_DB 
+} = process.env;
 
 try {
-    mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}:${MONGO_PORT}/mydb`, {
+    mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s',
+        MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_PORT, MONGO_DB
+    ), {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         authSource: 'admin'
